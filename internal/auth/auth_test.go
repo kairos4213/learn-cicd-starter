@@ -23,7 +23,7 @@ func TestGetApiKey(t *testing.T) {
 		wantErr    bool
 	}{
 		"Correct Auth Header": {
-			header:     noAuthHeader,
+			header:     correctHeader,
 			wantApiKey: "apiKey",
 			wantErr:    false,
 		},
