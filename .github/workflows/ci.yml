@@ -6,7 +6,7 @@ on:
 
 jobs:
   tests:
-    name: Tests
+    name:    Tests
     runs-on: ubuntu-latest
 
     steps:
@@ -19,10 +19,10 @@ jobs:
           go-version: "1.23.0"
 
       - name: Run Unit Tests
-        run: go test -cover ./...
+        run:  go test -cover ./...
       
   style:
-    name: Style
+    name:    Style
     runs-on: ubuntu-latest
 
     steps:
@@ -33,6 +33,12 @@ jobs:
         uses: actions/setup-go@v5
         with:
           go-version: "1.23.0"
-      
+            
       - name: Check code formatting
         run:  test -z $(go fmt ./...)
+      
+      - name: Install staticcheck
+        run:  go install honnef.co/go/tools/cmd/staticcheck@latest
+      
+      - name: Run staticcheck
+        run:  staticcheck ./...
